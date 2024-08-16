@@ -139,18 +139,22 @@
         fireworksCanvas.height = window.innerHeight;
 
         btnNo.addEventListener('mouseover', function() {
-            const container = document.querySelector('.container');
-            const containerRect = container.getBoundingClientRect();
-            const btnWidth = btnNo.offsetWidth;
-            const btnHeight = btnNo.offsetHeight;
+    const container = document.querySelector('.container');
+    const containerRect = container.getBoundingClientRect();
+    const btnWidth = btnNo.offsetWidth;
+    const btnHeight = btnNo.offsetHeight;
 
-            const randomX = Math.random() * (containerRect.width - btnWidth);
-            const randomY = Math.random() * (containerRect.height - btnHeight);
+    // Sayfanın yüksekliğinin %80'lik kısmını hesapla
+    const maxY = containerRect.height * 0.5;
 
-            btnNo.style.position = 'absolute';
-            btnNo.style.left = randomX + 'px';
-            btnNo.style.top = randomY + 'px';
-        });
+    const randomX = Math.random() * (containerRect.width - btnWidth);
+    const randomY = Math.random() * (maxY - btnHeight);
+
+    btnNo.style.position = 'absolute';
+    btnNo.style.left = randomX + 'px';
+    btnNo.style.top = randomY + 'px';
+});
+
 
         btnYes.addEventListener('click', function() {
             message.style.display = 'block';
